@@ -1,0 +1,94 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/800.css";
+@import "@fontsource/inter/900.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  --color-press-ink:    #121212;
+  --color-paper-white:  #ffffff;
+  --color-newsprint:    #f5f5f3;
+  --color-border-subtle:#121212;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: auto;
+  overflow-x: clip;
+  background-color: #ffffff;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: #121212;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #121212;
+  color: #ffffff;
+}
+
+/* Global link reset — prevent browser-default blue in body text */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Blueprint Grid Background (Light) - clearly visible Swiss engineering grid */
+.bg-blueprint-grid {
+  background-size: 38px 38px;
+  background-image: 
+    linear-gradient(to right, rgba(18, 18, 18, 0.085) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18, 18, 18, 0.085) 1px, transparent 1px);
+}
+
+.bg-blueprint-grid-dense {
+  background-size: 19px 19px;
+  background-image: 
+    linear-gradient(to right, rgba(18, 18, 18, 0.065) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18, 18, 18, 0.065) 1px, transparent 1px);
+}
+
+/* Blueprint Grid Dark (for horizontal gallery) */
+.bg-blueprint-grid-dark {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Hardware accelerated skew */
+.velocity-skew-card {
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Stacking Sheet Styling */
+.stack-sheet {
+  box-shadow: 0 -12px 36px rgba(18, 18, 18, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
