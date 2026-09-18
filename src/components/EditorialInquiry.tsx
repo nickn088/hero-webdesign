@@ -51,6 +51,15 @@ const SEO_PACKAGE: Package = {
   highlight: "Einzelleistung",
 };
 
+const ANALYSE_PACKAGE: Package = {
+  id: "analyse",
+  name: "20-Minuten Analyse",
+  price: 0,
+  duration: "20 Minuten",
+  desc: "Kostenlose telefonische Ersteinschätzung Ihrer aktuellen Website & Google-Position. Konkrete Hebel ohne Verpflichtung.",
+  highlight: "100% Kostenlos am Telefon",
+};
+
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 export const EditorialInquiry: React.FC = () => {
@@ -76,6 +85,9 @@ export const EditorialInquiry: React.FC = () => {
         setSelectedPkg(WEBSITE_PACKAGES[2]);
       } else if (id === "seo-standalone" || id === "seo" || id === "seo-sichtbarkeit") {
         setSelectedPkg(SEO_PACKAGE);
+      } else if (id === "analyse" || id === "kostenlose-analyse" || id === "analyse-20min") {
+        setSelectedPkg(ANALYSE_PACKAGE);
+        setWithSeoBoost(false);
       }
     };
 
@@ -83,7 +95,7 @@ export const EditorialInquiry: React.FC = () => {
     return () => window.removeEventListener("select-package", handleSelectPackage);
   }, []);
 
-  const seoPrice = selectedPkg.id === "seo-standalone" ? 0 : withSeoBoost ? 690 : 0;
+  const seoPrice = (selectedPkg.id === "seo-standalone" || selectedPkg.id === "analyse") ? 0 : withSeoBoost ? 690 : 0;
   const totalPrice = selectedPkg.price + seoPrice;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -98,14 +110,17 @@ export const EditorialInquiry: React.FC = () => {
           name,
           contact,
           message: `Kalkulation:
-- Paket: ${selectedPkg.name} (${selectedPkg.price} €)
-- SEO-Boost: ${withSeoBoost ? "Ja (+690 €)" : "Nein (Basis inklusive)"}
-- Festpreis: ${totalPrice} €
+- Typ: ${selectedPkg.id === "analyse" ? "Kostenlose 20-Minuten Analyse am Telefon" : selectedPkg.name}
+- Paketpreis: ${selectedPkg.price === 0 ? "Kostenlos (0 €)" : `${selectedPkg.price} €`}
+- SEO-Boost: ${selectedPkg.id === "analyse" ? "Im Gespräch enthalten" : withSeoBoost ? "Ja (+690 €)" : "Nein (Basis inklusive)"}
+- Gesamter Festpreis: ${totalPrice} €
 - Dauer: ca. ${selectedPkg.duration}
 
 Hinweis des Kunden:
 ${note || "Keine zusätzliche Notiz angegeben."}`,
-          subject: `Neue Projekt-Kalkulation: ${name} (${totalPrice} €)`,
+          subject: selectedPkg.id === "analyse"
+            ? `Neue 20-Minuten Analyse-Anfrage von ${name}`
+            : `Neue Projekt-Kalkulation: ${name} (${totalPrice} €)`,
         }),
       });
       const data = await res.json();
@@ -148,7 +163,9 @@ ${note || "Keine zusätzliche Notiz angegeben."}`,
               Vielen Dank, {name}!
             </h3>
             <p className="font-sans text-[16px] text-[#121212]/75 max-w-md mx-auto mb-8 leading-relaxed">
-              Ihre Kalkulation für die <strong>{selectedPkg.name}</strong> ({totalPrice.toLocaleString("de-DE")} € Festpreis) ist eingegangen. Ich melde mich innerhalb von 24 Stunden persönlich bei Ihnen.
+              {selectedPkg.id === "analyse"
+                ? "Ihre Anfrage für eine kostenlose 20-Minuten Website-Analyse ist eingegangen. Ich melde mich innerhalb von 24 Stunden persönlich bei Ihnen zur Terminabstimmung."
+                : `Ihre Kalkulation für die ${selectedPkg.name} (${totalPrice.toLocaleString("de-DE")} € Festpreis) ist eingegangen. Ich melde mich innerhalb von 24 Stunden persönlich bei Ihnen.`}
             </p>
             <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-[#121212] bg-white font-mono text-xs">
               <span>Bei Fragen direkt anrufen</span>
@@ -170,7 +187,76 @@ ${note || "Keine zusätzliche Notiz angegeben."}`,
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {/* Option A: Kostenlose 20-Minuten Analyse am Telefon */}
+              <motion.button
+                type="button"
+                data-cursor="hover"
+                onClick={() => {
+                  setSelectedPkg(ANALYSE_PACKAGE);
+                  setWithSeoBoost(false);
+                }}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className={`w-full p-4 sm:p-6 rounded-[20px] sm:rounded-[24px] border text-left transition-all duration-200 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-5 ${
+                  selectedPkg.id === "analyse"
+                    ? "bg-[#121212] text-white border-[#121212] shadow-lg ring-2 ring-[#121212]/20"
+                    : "bg-[#f5f5f3] text-[#121212] border-[#121212]/25 hover:border-[#121212]"
+                }`}
+              >
+                <div className="flex items-start sm:items-center gap-3">
+                  <div
+                    className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 text-[11px] ${
+                      selectedPkg.id === "analyse"
+                        ? "border-white bg-white text-[#121212] font-bold"
+                        : "border-[#121212]/40"
+                    }`}
+                  >
+                    {selectedPkg.id === "analyse" && "✓"}
+                  </div>
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <span className="font-display font-extrabold text-[17px] sm:text-[20px] uppercase tracking-tight">
+                        Kostenlose 20-Minuten Website-Analyse
+                      </span>
+                      <span
+                        className={`font-mono text-[9.5px] sm:text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-full ${
+                          selectedPkg.id === "analyse"
+                            ? "bg-white text-[#121212]"
+                            : "bg-[#121212] text-white"
+                        }`}
+                      >
+                        100% KOSTENLOS
+                      </span>
+                    </div>
+                    <p
+                      className={`font-sans text-[13px] sm:text-[14px] leading-relaxed max-w-xl ${
+                        selectedPkg.id === "analyse" ? "text-white/80" : "text-[#121212]/75"
+                      }`}
+                    >
+                      Kurzes Telefonat: Ich prüfe Ihre aktuelle Website & Google-Position und sage Ihnen direkt, was ich ändern würde — ohne Verkaufsdruck.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="font-mono text-right shrink-0 flex sm:flex-col items-baseline sm:items-end justify-between sm:justify-center border-t sm:border-t-0 border-current/15 pt-2 sm:pt-0">
+                  <span className="text-[22px] sm:text-[26px] font-extrabold">0 €</span>
+                  <span
+                    className={`text-[10.5px] sm:text-[11px] ${
+                      selectedPkg.id === "analyse" ? "text-white/70" : "text-[#121212]/60"
+                    }`}
+                  >
+                    ca. 20 Min.
+                  </span>
+                </div>
+              </motion.button>
+
+              <div className="text-left mb-3">
+                <span className="font-mono text-[10.5px] uppercase tracking-widest text-[#121212]/60 font-bold">
+                  ODER DIREKT EIN PROJEKT-PAKET WÄHLEN:
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
                 {WEBSITE_PACKAGES.map((pkg) => {
                   const isSelected = selectedPkg.id === pkg.id;
                   return (
@@ -182,7 +268,7 @@ ${note || "Keine zusätzliche Notiz angegeben."}`,
                       whileHover={{ y: -4, scale: 1.01 }}
                       whileTap={{ scale: 0.97 }}
                       transition={{ type: "spring", stiffness: 450, damping: 28 }}
-                      className={`relative p-6 sm:p-7 rounded-[24px] border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                      className={`relative p-5 sm:p-7 rounded-[20px] sm:rounded-[24px] border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                         isSelected
                           ? "bg-[#121212] text-white border-[#121212] shadow-lg ring-2 ring-[#121212]/20"
                           : pkg.isPopular
@@ -273,7 +359,21 @@ ${note || "Keine zusätzliche Notiz angegeben."}`,
 
             {/* SCHRITT 2: OPTIONALER SEO-BOOST */}
             <div>
-              {selectedPkg.id === "seo-standalone" ? (
+              {selectedPkg.id === "analyse" ? (
+                <div className="p-5 sm:p-6 rounded-[22px] border border-[#121212]/25 bg-white">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono text-xs uppercase tracking-wider font-bold text-[#121212]">
+                      2. ANALYSE-UMFANG AM TELEFON
+                    </span>
+                    <span className="font-mono text-xs font-bold text-[#121212]">
+                      100% INKLUSIVE (0 €)
+                    </span>
+                  </div>
+                  <p className="font-sans text-[14px] text-[#121212]/75 leading-relaxed">
+                    Im 20-minütigen Kennenlerngespräch analysieren wir Ihre Website, Ihre Google Maps Auffindbarkeit und Ihre direkten Konkurrenten in Ihrer Region. Vollkommen kostenfrei und ohne anschließende Spam-Anrufe.
+                  </p>
+                </div>
+              ) : selectedPkg.id === "seo-standalone" ? (
                 <div className="p-6 rounded-[22px] border border-[#121212] bg-white">
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-mono text-xs uppercase tracking-wider font-bold text-[#121212]">
@@ -353,14 +453,16 @@ ${note || "Keine zusätzliche Notiz angegeben."}`,
               <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 mb-8 border-b border-[#121212]/15 gap-2">
                 <div>
                   <span className="font-mono text-[11px] uppercase tracking-widest text-[#121212]/60 font-bold block mb-1">
-                    VERBINDLICHER FESTPREIS
+                    {selectedPkg.id === "analyse" ? "KOSTENLOSE WEBSITE-ANALYSE" : "VERBINDLICHER FESTPREIS"}
                   </span>
                   <div className="font-display font-extrabold text-[44px] sm:text-[54px] leading-none text-[#121212] tracking-tight">
                     {totalPrice.toLocaleString("de-DE")} €
                   </div>
                 </div>
                 <div className="font-mono text-[11.5px] text-[#121212]/65">
-                  Netto zzgl. 19% MwSt. · Inkl. 90+ Ladezeiten-Garantie
+                  {selectedPkg.id === "analyse"
+                    ? "100% unverbindlich · Dauer ca. 20 Minuten am Telefon"
+                    : "Netto zzgl. 19% MwSt. · Inkl. 90+ Ladezeiten-Garantie"}
                 </div>
               </div>
 
@@ -432,10 +534,10 @@ ${note || "Keine zusätzliche Notiz angegeben."}`,
                 className="w-full min-h-[56px] py-4 px-6 bg-[#121212] text-white hover:bg-black border border-[#121212] rounded-[16px] font-mono text-[13px] font-bold uppercase tracking-wider shadow-sm cursor-pointer flex items-center justify-center gap-2 group transition-colors duration-200"
               >
                 {status === "sending" ? (
-                  <span>ANGEBOT WIRD ERSTELLT...</span>
+                  <span>{selectedPkg.id === "analyse" ? "ANFRAGE WIRD GESENDET..." : "ANGEBOT WIRD ERSTELLT..."}</span>
                 ) : (
                   <>
-                    <span>FESTPREISANGEBOT ANFORDERN</span>
+                    <span>{selectedPkg.id === "analyse" ? "20-MINUTEN ANALYSE ANFORDERN" : "FESTPREISANGEBOT ANFORDERN"}</span>
                     <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
                   </>
                 )}
@@ -444,7 +546,9 @@ ${note || "Keine zusätzliche Notiz angegeben."}`,
               {/* Reassurance */}
               <div className="pt-3 text-center">
                 <span className="font-mono text-[11px] text-[#121212]/60">
-                  100% kostenlos & unverbindlich · Schriftliche Rückmeldung innerhalb von 24h
+                  {selectedPkg.id === "analyse"
+                    ? "100% kostenlos & unverbindlich · Terminabstimmung innerhalb von 24h"
+                    : "100% kostenlos & unverbindlich · Schriftliche Rückmeldung innerhalb von 24h"}
                 </span>
               </div>
             </div>
