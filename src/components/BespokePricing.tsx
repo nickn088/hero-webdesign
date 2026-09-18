@@ -6,10 +6,10 @@ import { MagneticButton } from "./MagneticButton";
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 const STACK_CONFIG = [
-  { top: "100px", zIndex: 10, rot: "-rotate-1", bg: "bg-white" },
-  { top: "135px", zIndex: 20, rot: "rotate-[0.6deg]", bg: "bg-[#f6f6f4]" },
-  { top: "170px", zIndex: 30, rot: "-rotate-[0.5deg]", bg: "bg-white" },
-  { top: "205px", zIndex: 40, rot: "rotate-[0.7deg]", bg: "bg-[#f8f8f8]" },
+  { topClass: "top-[72px] md:top-[100px]", zIndex: 10, rot: "-rotate-1", bg: "bg-white" },
+  { topClass: "top-[94px] md:top-[135px]", zIndex: 20, rot: "rotate-[0.6deg]", bg: "bg-[#f6f6f4]" },
+  { topClass: "top-[116px] md:top-[170px]", zIndex: 30, rot: "-rotate-[0.5deg]", bg: "bg-white" },
+  { topClass: "top-[138px] md:top-[205px]", zIndex: 40, rot: "rotate-[0.7deg]", bg: "bg-[#f8f8f8]" },
 ];
 
 export const BespokePricing: React.FC = () => {
@@ -55,16 +55,15 @@ export const BespokePricing: React.FC = () => {
         {/* Stacking Cards */}
         <div className="relative pb-16 md:pb-32">
           {siteContent.packages.map((pkg, i) => {
-            const config = STACK_CONFIG[i] || { top: "100px", zIndex: 10, rot: "", bg: "bg-white" };
+            const config = STACK_CONFIG[i] || { topClass: "top-[72px] md:top-[100px]", zIndex: 10, rot: "", bg: "bg-white" };
 
             return (
               <div
                 key={pkg.id}
                 style={{
-                  top: config.top,
                   zIndex: config.zIndex,
                 }}
-                className={`w-full rounded-[22px] sm:rounded-[32px] border border-[#121212] p-4 sm:p-7 md:p-12 mb-6 sm:mb-10 md:mb-32 shadow-[0_-8px_32px_rgba(0,0,0,0.08)] transition-transform duration-300 relative lg:sticky ${config.rot} ${config.bg}`}
+                className={`w-full rounded-[22px] sm:rounded-[32px] border border-[#121212] p-4 sm:p-7 md:p-12 mb-8 sm:mb-12 md:mb-32 shadow-[0_-8px_32px_rgba(0,0,0,0.08)] transition-transform duration-300 sticky ${config.topClass} ${config.rot} ${config.bg}`}
               >
                 {/* Header Bar */}
                 <div className="flex justify-between items-center pb-2.5 sm:pb-3 border-b border-[#121212] mb-4 sm:mb-6 font-mono text-[11px] sm:text-[13px]">
