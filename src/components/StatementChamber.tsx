@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const STATEMENTS = [
   "Die meisten Websites sind teure digitale Visitenkarten, die niemand findet.",
   "Ihre Kunden suchen auf dem Smartphone nach einer sofortigen, vertrauenswürdigen Lösung.",
-  "Handgeschriebener Code. 100/100 Ladezeit. Websites, die vom ersten Tag an Aufträge bringen.",
+  "Handgeschriebener Code. 90+ Ladezeit. Websites, die vom ersten Tag an Aufträge bringen.",
 ];
 
 export const StatementChamber: React.FC = () => {

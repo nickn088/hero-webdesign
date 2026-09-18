@@ -279,7 +279,7 @@ export const VaporoHero: React.FC = () => {
           <span>* NRW</span>
           <span>* HANDWERK & PRAXEN</span>
           <span className="text-[#dfbe9b] font-bold">* FESTPREIS AB 800 €</span>
-          <span>* 100/100 LADEZEIT</span>
+          <span>* 90+ LADEZEIT</span>
           <span className="text-emerald-400">* 100% INHABERGEFÜHRT</span>
           <span>* SCHLÜSSELFERTIG IN 2-3 WOCHEN</span>
           <span>* LEVERKUSEN</span>
@@ -287,7 +287,7 @@ export const VaporoHero: React.FC = () => {
           <span>* NRW</span>
           <span>* HANDWERK & PRAXEN</span>
           <span className="text-[#dfbe9b] font-bold">* FESTPREIS AB 800 €</span>
-          <span>* 100/100 LADEZEIT</span>
+          <span>* 90+ LADEZEIT</span>
           <span className="text-emerald-400">* 100% INHABERGEFÜHRT</span>
           <span>* SCHLÜSSELFERTIG IN 2-3 WOCHEN</span>
         </div>

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Gauge, Zap, PhoneCall, Terminal } from 'lucide-react';
 
 export const PerformanceEngine: React.FC = () => {
@@ -137,7 +137,7 @@ export const PerformanceEngine: React.FC = () => {
                 <span>DIAGNOSE: {level >= 80 ? 'HERO CODE ARCHITEKTUR' : level >= 40 ? 'DURCHSCHNITT' : 'KRITISCHER PERFORMANCE-VERLUST'}</span>
               </div>
               <span className={`font-bold ${level >= 80 ? 'text-emerald-400' : 'text-amber-400'}`}>
-                {level >= 80 ? '✓ 100 % ZERO-BLOAT' : '⚠️ UNNÖTIGE PLUGINS'}
+                {level >= 80 ? '✓ 100 % ZERO-BLOAT' : '✕ UNNÖTIGE PLUGINS'}
               </span>
             </div>
 

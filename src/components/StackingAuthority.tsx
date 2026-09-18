@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Zap, Search, ShieldCheck, Check, X, ArrowUpRight } from 'lucide-react';
 
 interface AuthorityCardProps {
@@ -29,7 +29,7 @@ const cardsData: AuthorityCardProps[] = [
     icon: <Zap className="w-6 h-6 text-cyan-400" />,
     comparisonTitle: 'Der technische Unterschied',
     pros: [
-      '100/100 Google PageSpeed Score',
+      '90+ Google PageSpeed Score',
       '0,3s reale Ladezeit auf dem Smartphone',
       'DSGVO-konform ohne US-Cloudflare-Leck',
       'Keine monatlichen Plugin-Lizenzkosten',

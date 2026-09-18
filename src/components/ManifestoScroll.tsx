@@ -82,7 +82,7 @@ export const ManifestoScroll: React.FC = () => {
               Echter Code, Festpreis & direkter Inhaber-Kontakt
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans">
-              Reiner, sauberer Code ohne Plugin-Verschleiß. 100/100 Ladezeiten, 1 Ansprechpartner vom ersten Gespräch bis zum Go-Live und schlüsselfertige Übergabe in 2–3 Wochen.
+              Reiner, sauberer Code ohne Plugin-Verschleiß. 90+ Ladezeiten, 1 Ansprechpartner vom ersten Gespräch bis zum Go-Live und schlüsselfertige Übergabe in 2–3 Wochen.
             </p>
           </div>
         </motion.div>

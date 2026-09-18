@@ -164,7 +164,7 @@ export const Hero: React.FC = () => {
                     </div>
                     <div className="pt-2 flex items-center gap-2">
                       <div className="flex-1 py-2 px-3 rounded-lg bg-emerald-500/20 text-emerald-400 text-xs font-bold text-center border border-emerald-500/30">
-                        📞 Jetzt Notdienst anrufen
+                        Jetzt Notdienst anrufen
                       </div>
                       <div className="flex-1 py-2 px-3 rounded-lg bg-white/10 text-white text-xs font-medium text-center">
                         Angebot anfordern
@@ -198,7 +198,7 @@ export const Hero: React.FC = () => {
 
                   {/* Broken Legacy Simulation */}
                   <div className="p-4 rounded-xl bg-black/60 border border-rose-500/20 space-y-3 opacity-75">
-                    <div className="text-xs text-rose-300">⚠️ Veraltetes WordPress / Elementor Plugin-Monster</div>
+                    <div className="text-xs text-rose-300 font-mono font-semibold">[WARNUNG] Veraltetes WordPress / Elementor Plugin-Monster</div>
                     <div className="h-3 w-full bg-rose-500/20 rounded animate-pulse"></div>
                     <div className="h-3 w-4/5 bg-rose-500/20 rounded animate-pulse"></div>
                     <p className="text-[11px] text-zinc-400">
@@ -207,8 +207,8 @@ export const Hero: React.FC = () => {
                   </div>
 
                   {/* Friction Warning */}
-                  <div className="p-3 rounded-xl bg-rose-950/50 border border-rose-500/30 text-xs text-rose-300">
-                    ❌ Interessenten schließen die Seite nach 3 Sekunden und rufen beim nächsten Betrieb an.
+                  <div className="p-3 rounded-xl bg-rose-950/50 border border-rose-500/30 text-xs text-rose-300 font-mono">
+                    [ABBRUCH] Interessenten schließen die Seite nach 3 Sekunden und rufen beim nächsten Betrieb an.
                   </div>
                 </div>
               )}

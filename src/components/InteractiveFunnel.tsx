@@ -265,7 +265,7 @@ export const InteractiveFunnel: React.FC = () => {
                     </button>
 
                     <div className="text-center text-[11px] text-zinc-500">
-                      ⚡ Roman antwortet persönlich innerhalb eines Werktages · Keine Werbeanrufe
+                      Roman antwortet persönlich innerhalb eines Werktages · Keine Werbeanrufe
                     </div>
                   </div>
                 </form>

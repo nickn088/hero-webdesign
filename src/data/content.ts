@@ -1,4 +1,4 @@
-﻿export interface ServicePackage {
+export interface ServicePackage {
   id: string;
   number: string;
   name: string;
@@ -144,7 +144,7 @@ export const siteContent = {
         "100 % Mobile-First für Smartphone-Kunden",
         "Telefon und WhatsApp-Button permanent erreichbar",
         "Google Unternehmensprofil verknüpft",
-        "Ladezeit unter 1,5 Sekunden (100/100 PageSpeed)",
+        "Ladezeit unter 1,5 Sekunden (90+ PageSpeed)",
         "Einfache Einweisung für spätere Textanpassungen",
       ],
     },
@@ -391,4 +391,21 @@ export const siteContent = {
         "Für Ihren Ort und Ihre spezifischen Leistungen in aller Regel ja. Genau dafür ist die semantische Seitenstruktur und das Google Unternehmensprofil ausgelegt. Bei stark umkämpften nationalen Keywords dauert es länger. Was realistisch ist, sage ich Ihnen vorab im Gespräch.",
     },
   ],
+
+  ctaBanner: {
+    headline: "Klingt das nach dem, was Ihr Betrieb braucht?",
+    text: "Zwanzig Minuten am Telefon, kostenlos. Danach wissen Sie, was ich ändern würde — und was es kostet.",
+    buttonText: "Kostenlose Analyse",
+  },
+
+  legal: {
+    impressum: {
+      heading: "Impressum",
+      text: "Die Angaben für das Impressum werden vom Inhaber nachgereicht.",
+    },
+    datenschutz: {
+      heading: "Datenschutzerklärung",
+      text: "Die Angaben für die Datenschutzerklärung werden vom Inhaber nachgereicht.",
+    },
+  },
 };

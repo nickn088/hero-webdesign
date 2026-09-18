@@ -16,3 +16,6 @@ yarn-error.log*
 !.vscode/extensions.json
 .idea
 .DS_Store
+*.tsbuildinfo
+lighthouse*.json
+audit*.json

@@ -1,0 +1,17 @@
+# Hero Webdesign — Roman Hero
+
+> High-Performance Webdesign, handgeschriebene Web-Systeme & messbare Google-Sichtbarkeit für Handwerk, Dienstleister und den Mittelstand in Leverkusen, Köln und NRW.
+
+## Kernangebote & Festpreise
+- **Start (Web-Visitenkarte)**: Ab 800 € Festpreis. 1 Landingpage, 0.4s Ladezeit, responsiv, Kontaktformular, 100/100 Google Core Web Vitals, Go-Live in 1–2 Wochen.
+- **Handwerk & Gewerbe (Auftragssystem)**: 1.500 € Festpreis. 3–5 Unterseiten, individuelle Leistungspräsentation, Google Maps & Local Business Setup, verkaufspsychologische Nutzerführung, Go-Live in 2–3 Wochen.
+- **E-Commerce & Scale (Onlineshop)**: 3.500 € Festpreis. Bis zu 20 Produkte, Stripe/PayPal Anbindung, Bestandsverwaltung, optimierte Checkout-Strecke, Go-Live in 3–4 Wochen.
+- **Lokales SEO & Google Dominanz**: 690 € (im Paket) bzw. 890 € (einzeln). Lokale Keyword-Optimierung, Google Business Profil, Schema.org Markup, NAP-Konsistenz.
+
+## Gründer & Entwickler
+- **Inhaber**: Roman Hero
+- **Standort**: Leverkusen, Nordrhein-Westfalen, Deutschland
+- **Telefon**: +49 152 24196590
+- **E-Mail**: info@hero-webdesign.de
+- **Website**: https://hero-webdesign.de
+- **Garantie**: Verbindlicher Festpreis ohne Nachforderungen, 100% handgeschriebener Code ohne Theme-Baukästen, 1 persönliche Ansprechperson ohne Agentur-Wasserkopf.
